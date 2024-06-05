@@ -1,34 +1,5 @@
 # #!/bin/bash
 
-# # Function to convert PDF to text
-# pdf_to_text() {
-#   pdf_file_path="$1"
-
-#   # Extract filename without extension
-#   pdf_filename="${pdf_file_path%.*}"
-
-#   # Extract base path for the PDF file
-#   pdf_base_path="${pdf_file_path%/*}"
-
-
-#   image_folder="${pdf_base_path}/images/'${pdf_filename}'"
-
-#   # Create subdirectory for images using base path
-#   mkdir -p "$image_folder"
-
-
-#   # Convert PDF to images
-#   pdftoppm -jpeg -jpegopt quality=100 -r 300 "${pdf_file_path}" "$image_folder/pg"
-#   # images/"${pdf_filename}"/pg
-
-#   # Loop through images in the directory and run OCR
-#   for image_file in "$image_folder"/*.jpg; do
-#     text_file="${image_file%.*}.txt"
-#     echo "$image_filename"
-#     easyocr -l en -f "${image_file}" --detail=1 --gpu=True > $text_file
-#   done
-# }
-
 # # Example usage:
 # pdf_to_text "/home/abhishek/Downloads/files_with_txt_2_/files_with_txt/pdf/Doc7_044dc9_.pdf"
 
@@ -82,11 +53,6 @@ if [ -z "$input_directory" ]; then
   error "Error: Please provide the directory path as an argument."
   exit 1
 fi
-
-# # Find all PDF files in the directory
-# find "$input_directory" -type f -name "*.pdf" -print0 |
-#   xargs -0 -P 2 -n 1 bash -c 'pdf_to_text "$1"' --
-
 
 # Iterate through all files in the directory
 for file in "$input_directory"/*.pdf; do
