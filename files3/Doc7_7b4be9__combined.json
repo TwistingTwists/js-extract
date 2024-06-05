@@ -1,0 +1,20 @@
+[
+  {
+    "question": "Who\namong\nthe  following\nstarted\nthe\nIndian\nAgriculture\nService?",
+    "choices": "a) Lord Curzon\nb) William Bentinck\nc) Lord Minto\nd) Lord Rippon",
+    "answer": "(c) Lord Minto", 
+ "topic": "Governors-General"
+  },
+  {
+    "question": "Which one of the following Viceroys was the first to officially\nshift his Council to Simla in the summer season?",
+    "choices": "a)John Lawrence\nb)Lord Dalhousie\nc) Lord Mayo\nd) William Bentinck",
+    "answer": "(a) John Lawrence", 
+ "topic": "Governors-General"
+  },
+  {
+    "question": "The\nruins\nof Hampi\nwere brought to light by\nwhich\nof the\nfollowing British officers of the East India Company?",
+    "choices": "a) Colonel Colin Mackenzie\nb)James Prinsep\nc) William Jones\nd)James Rennell",
+    "answer": "(a) Colonel Colin Mackenzie", 
+ "topic": "Governors-General"
+  }
+]

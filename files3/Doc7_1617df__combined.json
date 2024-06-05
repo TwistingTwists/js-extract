@@ -1,0 +1,20 @@
+[
+  {
+    "question": "Who among the following was the author of Hind Swaraj?",
+    "choices": "a)Aurobindo Ghose\nb)c: R: Das\nc) Mahatma Gandhi\nd)Rajendra Prasad",
+    "answer": "(c) Mahatma Gandhi",
+    "topic": "Great Personalities"
+  },
+  {
+    "question": "Who amongst the following organized the All India Scheduled\nCastes Federation?",
+    "choices": "a)Jyotiba Phule\nb)Periyar\nc) B. R: Ambedkar\nd)M: K. Karunanidhi",
+    "answer": "(c) B. R. Ambedkar",
+    "topic": "Great Personalities"
+  },
+  {
+    "question": "The social ideals of Mahatma Gandhi were first put forth in",
+    "choices": "a) Hind Swaraj\nb)An Autobiography- The Story of My Experiments with Truth\nc) History of the Satyagraha in South Africa\nd) The Bhagavad Gita According to Gandhi",
+    "answer": "(a) Hind Swaraj",
+    "topic": "Great Personalities"
+  }
+]
