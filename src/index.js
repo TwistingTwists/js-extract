@@ -62,10 +62,36 @@ const {
     },
   ];
   
-  export async function run(text_file_path) {
-    console.log(text_file_path)
-    const text_file_content = await fs.readFile(text_file_path, 'utf-8');
-    // const system_prompt = "you are an expert educator.  Making students learn concepts progressively is your expertise. You break down a concept in sub-concepts (or subtopics) in increasing level of difficulty.";
+  export async function run(image_file_path) {
+    // console.log(text_file_path)
+    // const text_file_content = await fs.readFile(text_file_path, 'utf-8');
+    // // const system_prompt = "you are an expert educator.  Making students learn concepts progressively is your expertise. You break down a concept in sub-concepts (or subtopics) in increasing level of difficulty.";
+
+    // const chatSession = model.startChat({
+    //   generationConfig,
+    //   safetySettings,
+    //   history: [
+    //     {
+    //       role: "user",
+    //       parts: [
+    //         {text: text_file_content},
+    //         {text: "for the above text, create the json output needed is : "},
+    //         {text: "{ question: <question_text> , choices: <possible choices present in the text>,  answer: <correct answer >} "},
+    //         {text: `
+    //         Do not include anything that is not mentioned in the text. 
+    //         As an expert data manipulator, you have the skill to adhere strictly to the given text. High quality data transformation only involves changing the data in given format.
+    //         do not generate any data. ONLY reformat the data in given schema.
+    //         `},
+    //         {text: "do include the text as-it-is. Keep the options / alphabets and numbers given in choices and the answer. These are important to match the correctness of the answer.  "},
+    //       ],
+          
+    //     }
+    //   ],
+    // });
+  
+    const image_data = await fs.readFile(image_file_path);
+    const base64_image = image_data.toString('base64');
+    const data_url = `data:image/png;base64,${base64_image}`; // Assuming PNG format
 
     const chatSession = model.startChat({
       generationConfig,
@@ -74,30 +100,26 @@ const {
         {
           role: "user",
           parts: [
-            {text: text_file_content},
-            {text: "for the above text, create the json output needed is : "},
-            {text: "{ question: <question_text> , choices: <possible choices present in the text>,  answer: <correct answer >} "},
-            {text: `
-            Do not include anything that is not mentioned in the text. 
-            As an expert data manipulator, you have the skill to adhere strictly to the given text. High quality data transformation only involves changing the data in given format.
-            do not generate any data. ONLY reformat the data in given schema.
-            `},
-            {text: "do include the text as-it-is. Keep the options / alphabets and numbers given in choices and the answer. These are important to match the correctness of the answer.  "},
+            {text: data_url},
+            {text: "Extract the text from the image."},
           ],
-          
         }
       ],
     });
-  
-    const result = await chatSession.sendMessage("Please generate valid json.");
 
-
+    const result = await chatSession.sendMessage("Please extract the text.");
     const result_text = result.response.text();
     greenLog(result_text);
 
+    // const result = await chatSession.sendMessage("Please generate valid json.");
+
+
+    // const result_text = result.response.text();
+    // greenLog(result_text);
+
     // save json as text file 
-    const outputDir = path.dirname(text_file_path);
-    const fileNameWithoutExtension = path.basename(text_file_path, path.extname(text_file_path));
+    const outputDir = path.dirname(image_file_path);
+    const fileNameWithoutExtension = path.basename(image_file_path, path.extname(image_file_path));
 
     // const outputFileName = `${fileNameWithoutExtension}__json_maybe.txt`;
     // const outputFilePath = path.join(outputDir, outputFileName);
